@@ -1,0 +1,31 @@
+USE [EntrepotDB]
+GO
+
+/****** Object:  Table [dbo].[Column]    Script Date: 2018-05-21 15:43:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Column](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](10) NOT NULL,
+	[CellTotal] [smallint] NULL,
+	[FK_Row] [int] NOT NULL,
+ CONSTRAINT [PK_Column] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY],
+ CONSTRAINT [U_Column_Name] UNIQUE (Name)
+GO
+
+ALTER TABLE [dbo].[Column]  WITH NOCHECK ADD  CONSTRAINT [FK_Column_Row] FOREIGN KEY([FK_Row])
+REFERENCES [dbo].[Row] ([Id])
+NOT FOR REPLICATION 
+GO
+
+ALTER TABLE [dbo].[Column] CHECK CONSTRAINT [FK_Column_Row]
+GO
+
