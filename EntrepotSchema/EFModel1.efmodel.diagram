@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eFModelDiagram dslVersion="1.0.3.9" Id="8ba12ffe-d50b-4789-a842-773850c5cb60" absoluteBounds="0, 0, 11, 8.5" name="EFModel1">
+  <modelRootMoniker Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" />
+  <nestedChildShapes>
+    <classShape Id="773155fe-0b60-4aba-b178-490b16ecd7f9" absoluteBounds="3.25, 1.75, 1.5, 0.85169108072916666" fillColor="0, 122, 204" textColor="White" outlineColor="Black" outlineDashStyle="Solid" visible="true" outlineThickness="0.01">
+      <modelClassMoniker Id="37fc75be-7478-4a4f-a718-dc79d8c0f624" />
+      <nestedChildShapes>
+        <elementListCompartment Id="05d0fb49-59b0-4000-bfbb-ae77e88c799f" absoluteBounds="3.265, 2.06, 1.4700000000000002, 0.44169108072916657" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</eFModelDiagram>

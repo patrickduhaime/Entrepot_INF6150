@@ -47,33 +47,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entrepot.cs">
+    <Compile Include="EFModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Entrepot.tt</DependentUpon>
+      <DependentUpon>EFModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="EFModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Entrepot.efmodel" />
-    <None Include="Entrepot.efmodel.diagram">
-      <DependentUpon>Entrepot.efmodel</DependentUpon>
+    <None Include="EFModel1.efmodel" />
+    <None Include="EFModel1.efmodel.diagram">
+      <DependentUpon>EFModel1.efmodel</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Entrepot.tt">
+    <Content Include="EFModel1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Entrepot.cs</LastGenOutput>
+      <LastGenOutput>EFModel1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

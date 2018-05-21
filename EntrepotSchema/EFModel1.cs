@@ -16,14 +16,14 @@ using System.Linq;
 
 namespace EntrepotSchema
 {
-   public partial class Entrepot
+   public partial class Test
    {
       partial void Init();
 
       /// <summary>
       /// Default constructor
       /// </summary>
-      public Entrepot()
+      public Test()
       {
          Init();
       }
@@ -42,7 +42,7 @@ using System.Data.Entity;
 
 namespace EntrepotSchema
 {
-   public partial class EntrepotDatabaseInitializer : MigrateDatabaseToLatestVersion<Entrepot, EntrepotDbMigrationConfiguration>
+   public partial class EFModel1DatabaseInitializer : MigrateDatabaseToLatestVersion<EFModel1, EFModel1DbMigrationConfiguration>
    {
    }
 }
@@ -50,11 +50,11 @@ using System.Data.Entity.Migrations;
 
 namespace EntrepotSchema
 {
-   public sealed partial class EntrepotDbMigrationConfiguration : DbMigrationsConfiguration<Entrepot>
+   public sealed partial class EFModel1DbMigrationConfiguration : DbMigrationsConfiguration<EFModel1>
    {
       partial void Init();
 
-      public EntrepotDbMigrationConfiguration()
+      public EFModel1DbMigrationConfiguration()
       {
          AutomaticMigrationsEnabled = false;
          AutomaticMigrationDataLossAllowed = false;
@@ -70,5 +70,5 @@ using System.Data.Entity.Infrastructure.Annotations;
 
 namespace EntrepotSchema
 {
-   public partial class Entrepot : System.Data.Entity.DbContext
+   public partial class EFModel1 : System.Data.Entity.DbContext
    {
