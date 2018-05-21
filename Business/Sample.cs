@@ -3,36 +3,36 @@ using System.ComponentModel;
 
 namespace Business
 {
-    public class Article : IDataErrorInfo, INotifyPropertyChanged
+    public class Sample : IDataErrorInfo, INotifyPropertyChanged
     {
         #region "Members"
 
-        //Membre privé représentant la description de l'article
-        private string m_Description;
+        //Membre privé représentant l'article de l'exemplaire
+        private Article m_Article;
 
-        //Membre privé représentant l'id de l'article
+        //Membre privé représentant l'id de l'exemplarie
         private int m_Id;
 
-        //Membre privé représentant le nom de l'article
-        private string m_Name;
+        //Membre privé représentant la quantité des unité que le conteneur contient
+        private int? m_Quantity;
+
+        //Membre privé représentant le code à bare de l'article
+        private string m_SerialNumber;
 
         //Membre privé représentant l'event de la modification d'une property
         private event PropertyChangedEventHandler M_PropertyChanged;
-
-        //Membre privé représentant l'éspace necessaire pour stocker une unité de l'article
-        private float m_Space;
 
         #endregion "Members"
 
         #region "Properties"
 
         /// <summary>
-        /// Property représente la description de l'article
+        /// Property représente l'article de l'éxemplaire
         /// </summary>
-        public string Description
+        public Article Article
         {
-            get { return m_Description; }
-            set { m_Description = value; }
+            get { return m_Article; }
+            set { m_Article = value; }
         }
 
         /// <summary>
@@ -45,21 +45,21 @@ namespace Business
         }
 
         /// <summary>
-        /// Property représente le nom de l'article
+        /// Property représente la quantité des unité que le conteneur contient
         /// </summary>
-        public string Name
+        public int? Quantity
         {
-            get { return m_Name; }
-            set { m_Name = value; }
+            get { return m_Quantity; }
+            set { m_Quantity = value; }
         }
 
         /// <summary>
-        /// Property représente l'éspace necessaire pour stocker une unité de l'article
+        /// Property représente le code à bare de l'article
         /// </summary>
-        public float Space
+        public string SerialNumber
         {
-            get { return m_Space; }
-            set { m_Space = value; }
+            get { return m_SerialNumber; }
+            set { m_SerialNumber = value; }
         }
 
         /// <summary>
@@ -82,13 +82,9 @@ namespace Business
                 string errorMsg = string.Empty;
                 switch (columnName)
                 {
-                    case "Name":
-                        if (String.IsNullOrEmpty(Name) || Name.Length < 4 || Name.Length > 50)
-                            errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_ARTICLENAMEERROR);
-                        break;
-
-                    case "Space":
-                        if (Space <= 0) errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_ARTICLESPACEERROR);
+                    case "SerialNumber":
+                        if (String.IsNullOrEmpty(SerialNumber) || SerialNumber.Length < 4 || SerialNumber.Length > 50)
+                            errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_BARECODESIZEERROR);
                         break;
                 }
                 return errorMsg;
