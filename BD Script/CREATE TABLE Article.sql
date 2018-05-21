@@ -1,0 +1,23 @@
+USE [EntrepotDB]
+GO
+
+/****** Object:  Table [dbo].[Article]    Script Date: 2018-05-21 15:42:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Article](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[Space] [int] NOT NULL,
+ CONSTRAINT [PK_Article] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY],
+ CONSTRAINT [U_Article_Name] UNIQUE (Name)
+GO
+
