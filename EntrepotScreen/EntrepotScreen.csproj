@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntrepotSchema\EntrepotSchema.csproj">
+      <Project>{307351d5-6aba-4717-8071-97aa3846e166}</Project>
+      <Name>EntrepotSchema</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
