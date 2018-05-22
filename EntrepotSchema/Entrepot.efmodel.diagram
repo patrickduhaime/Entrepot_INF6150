@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eFModelDiagram dslVersion="1.0.3.9" Id="439f7085-454b-4ec4-a1c1-4d53b332a107" absoluteBounds="0, 0, 11, 8.5" name="Entrepot">
+  <modelRootMoniker Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" />
+  <nestedChildShapes>
+    <classShape Id="a4936f68-a442-423a-8d15-8c0139c240c1" absoluteBounds="4.125, 1.25, 1.5, 0.85169108072916666" fillColor="0, 122, 204" textColor="White" outlineColor="Black" outlineDashStyle="Solid" visible="true" outlineThickness="0.01">
+      <modelClassMoniker Id="3019f93c-e8e5-47ee-9928-e50ff1f33a5a" />
+      <nestedChildShapes>
+        <elementListCompartment Id="252e2689-71bf-4c28-8a7e-cd270d10266d" absoluteBounds="4.14, 1.56, 1.4700000000000002, 0.44169108072916657" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</eFModelDiagram>
