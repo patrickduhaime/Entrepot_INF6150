@@ -10,12 +10,12 @@ namespace Business
     {
         //Instances variables
 
-        private int Id { get; set; }
-        private String Name { get; set; } // max 50 characters
-        private String Address { get; set; }
-        private int RowTotal { get; set; }
-        private int ColumnTotal { get; set; }
-        private int FloorTotal { get; set; }
+        public int Id { get; set; }
+        public String Name { get; set; } // max 50 characters
+        public String Address { get; set; }
+        public int RowTotal { get; set; }
+        public int ColumnTotal { get; set; }
+        public int FloorTotal { get; set; }
 
         //Constructor
         public Warehouse(int Id, String Name, String Address, int RowTotal, int ColumnTotal, int FloorTotal)
