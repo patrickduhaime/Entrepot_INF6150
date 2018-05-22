@@ -1,15 +1,12 @@
 ﻿using Business;
-using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 
 namespace Services
 {
-    class SampleService : IDisposable
+    internal class SampleService
     {
         #region "Constants"
 
@@ -27,23 +24,12 @@ namespace Services
         //Membre privé représente l'instance de ressource
         private static SampleService m_Instance;
 
-        //Membre privé représente la connection à la base de donnée
-        private SqlConnection m_SqlConnection;
-
-        // Flag: Has Dispose already been called?
-        private bool disposed = false;
-
-        // Instantiate a SafeHandle instance.
-        private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
-
         #endregion "Membres"
 
         #region "Constructor"
 
         private SampleService()
         {
-            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AppUser"].ConnectionString);
-            m_SqlConnection.Open();
         }
 
         #endregion "Constructor"
@@ -75,11 +61,11 @@ namespace Services
             {
                 CommandText = STR_CREATESAMPLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             cmd.Parameters.Add("@ArticleId", SqlDbType.Int).Value = sample.Article.Id;
-            if(sample.Quantity.HasValue) cmd.Parameters.Add("@Quantity", SqlDbType.VarChar).Value = sample.Quantity;
+            if (sample.Quantity.HasValue) cmd.Parameters.Add("@Quantity", SqlDbType.VarChar).Value = sample.Quantity;
             cmd.Parameters.Add("@SerialNumber", SqlDbType.Float).Value = sample.SerialNumber;
 
             sample.Id = (int)cmd.ExecuteScalar();
@@ -95,7 +81,7 @@ namespace Services
             {
                 CommandText = STR_DELETESAMPLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             cmd.Parameters.Add("@id", SqlDbType.VarChar).Value = sampe.Id;
@@ -116,7 +102,7 @@ namespace Services
 
             cmd.CommandText = STR_CREATESAMPLEPROC;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Connection = m_SqlConnection;
+            cmd.Connection = ServiceDB.Instance.SqlConnection;
 
             cmd.Parameters.Add("@Filter", SqlDbType.VarChar).Value = filter;
 
@@ -146,42 +132,15 @@ namespace Services
             {
                 CommandText = STR_UPDATESAMPLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = sample.Id;
             cmd.Parameters.Add("@ArticleId", SqlDbType.VarChar).Value = sample.Article.Id;
-            if(sample.Quantity.HasValue) cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sample.Quantity;
+            if (sample.Quantity.HasValue) cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sample.Quantity;
             cmd.Parameters.Add("@SerialNumber", SqlDbType.Float).Value = sample.SerialNumber;
 
             cmd.ExecuteNonQuery();
-        }
-
-        /// <summary>
-        /// Public implementation of Dispose pattern callable by consumers.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Protected implementation of Dispose pattern.
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                handle.Dispose();
-                m_SqlConnection.Close();
-            }
-
-            disposed = true;
         }
 
         #endregion "Methods"

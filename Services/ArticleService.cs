@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace Services
 {
-    public class ArticleService : IDisposable
+    public class ArticleService
     {
         #region "Constants"
 
@@ -23,25 +23,14 @@ namespace Services
         #region "Membres"
 
         //Membre privé représente l'instance de ressource
-        private static ArticleService m_Instance;
-
-        //Membre privé représente la connection à la base de donnée
-        private SqlConnection m_SqlConnection;
-
-        // Flag: Has Dispose already been called?
-        private bool disposed = false;
-
-        // Instantiate a SafeHandle instance.
-        private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+        private static ArticleService m_Instance;                                                                                                         
 
         #endregion "Membres"
 
         #region "Constructor"
 
         private ArticleService()
-        {
-            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AppUser"].ConnectionString);
-            m_SqlConnection.Open();
+        {        
         }
 
         #endregion "Constructor"
@@ -73,7 +62,7 @@ namespace Services
             {
                 CommandText = STR_CREATEARTICLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             if (!String.IsNullOrEmpty(article.Description)) cmd.Parameters.Add("@Description", SqlDbType.VarChar).Value = article.Description;
@@ -93,7 +82,7 @@ namespace Services
             {
                 CommandText = STR_DELETEARTICLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             cmd.Parameters.Add("@id", SqlDbType.VarChar).Value = article.Id;
@@ -114,7 +103,7 @@ namespace Services
 
             cmd.CommandText = STR_CREATEARTICLEPROC;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Connection = m_SqlConnection;
+            cmd.Connection = ServiceDB.Instance.SqlConnection;
 
             cmd.Parameters.Add("@Filter", SqlDbType.VarChar).Value = filter;
 
@@ -138,13 +127,13 @@ namespace Services
         /// Permet de mettre à jours un article dans la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Update(Article article)
+        public void Update<Object>(Article article)
         {
             SqlCommand cmd = new SqlCommand
             {
                 CommandText = STR_UPDATEARTICLEPROC,
                 CommandType = CommandType.StoredProcedure,
-                Connection = m_SqlConnection
+                Connection = ServiceDB.Instance.SqlConnection
             };
 
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = article.Id;
@@ -154,34 +143,7 @@ namespace Services
 
             cmd.ExecuteNonQuery();
         }
-
-        /// <summary>
-        /// Public implementation of Dispose pattern callable by consumers.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Protected implementation of Dispose pattern.
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
-            {
-                handle.Dispose();
-                m_SqlConnection.Close();
-            }
-
-            disposed = true;
-        }
-
+              
         #endregion "Methods"
     }
 }
