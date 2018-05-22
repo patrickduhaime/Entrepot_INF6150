@@ -67,7 +67,7 @@ namespace Services
         /// Permet de créer un article dans la base de données et setter son ID générer
         /// </summary>
         /// <param name="article"></param>
-        public void Create(T article)
+        public void Create(Article article)
         {
             SqlCommand cmd = new SqlCommand
             {
@@ -87,7 +87,7 @@ namespace Services
         /// Permet de suppriemer un article de la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Delete(T article)
+        public void Delete(Article article)
         {
             SqlCommand cmd = new SqlCommand
             {
@@ -106,11 +106,11 @@ namespace Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public IList<T> Read(String filter)
+        public IList<Article> Read(String filter)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
-            IList<T> articles = new List<T>();
+            IList<Article> articles = new List<Article>();
 
             cmd.CommandText = STR_CREATEARTICLEPROC;
             cmd.CommandType = CommandType.StoredProcedure;
@@ -121,7 +121,7 @@ namespace Services
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                T article = new T
+                Article article = new Article
                 {
                     Description = reader["description"]!=null?(String)reader["description"]:String.Empty,
                     Id = (int)reader["id"],
@@ -138,7 +138,7 @@ namespace Services
         /// Permet de mettre à jours un article dans la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Update(T article)
+        public void Update(Article article)
         {
             SqlCommand cmd = new SqlCommand
             {

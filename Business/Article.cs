@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Business
 {
-    public class T : IDataErrorInfo, INotifyPropertyChanged
+    public class Article : IDataErrorInfo, INotifyPropertyChanged
     {
         #region "Members"
 
