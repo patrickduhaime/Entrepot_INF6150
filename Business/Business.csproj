@@ -47,11 +47,8 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Sample.cs" />
-=======
     <Compile Include="Warehouse.cs" />
->>>>>>> Warehouse
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

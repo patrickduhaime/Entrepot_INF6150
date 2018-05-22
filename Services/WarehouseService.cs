@@ -1,12 +1,12 @@
-﻿using Business;
-using EntrepotScreen;
+﻿
+using Business;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;        
 
 namespace Services
 {
@@ -121,18 +121,19 @@ namespace Services
 
             reader = cmd.ExecuteReader();
             while (reader.Read())
-            {
+            {                 /*
                 Warehouse warehouse = new Warehouse();
                 {
                     Id = (int)reader["id"],
                     Name = (String)reader["name"],
-                    Address = (String)reader["address"]
-
-                    RowTotal = (int)reader["rowtotal"]
+                    Address = (String)reader["address"],    
+                    RowTotal = (int)reader["rowtotal"],
+                    ColumnTotal = (int)reader["ColumnTotal"],
+                    FloorTotal = (int)reader["FloorTotal"]
 
 
                 };
-                warehouses.Add(warehouse);
+                warehouses.Add(warehouse);      */
             }
 
             return warehouses;

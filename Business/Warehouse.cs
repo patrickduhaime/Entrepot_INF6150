@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business
 {
-    class Warehouse
+    public class Warehouse
     {
         //Instances variables
 
@@ -30,14 +26,13 @@ namespace Business
 
         public virtual string ToString()
         {
-            String result = 
-                "WarehouseID: " + Id +"\n"+
+            String result =
+                "WarehouseID: " + Id + "\n" +
                 "Warehouse Name: " + Name + "\n" +
                 "Warehouse Address: " + Address + "\n" +
-                "Capacity: " + RowTotal*ColumnTotal*FloorTotal;
+                "Capacity: " + RowTotal * ColumnTotal * FloorTotal;
 
             return result;
         }
-
     }
 }

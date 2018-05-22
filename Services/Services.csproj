@@ -49,11 +49,8 @@
     <Compile Include="ServiceDB.cs" />
     <Compile Include="ArticleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="SampleService.cs" />
-=======
     <Compile Include="WarehouseService.cs" />
->>>>>>> Warehouse
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
