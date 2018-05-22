@@ -329,3 +329,6 @@ ASALocalRun/
 .mfractor/
 *.suo
 *.suo
+Business/Business.csproj
+EntrepotScreen/App.config
+Services/Services.csproj
