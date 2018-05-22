@@ -42,7 +42,7 @@ namespace Services
 
         private SampleService()
         {
-            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
+            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AppUser"].ConnectionString);
             m_SqlConnection.Open();
         }
 

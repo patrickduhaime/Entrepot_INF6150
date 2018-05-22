@@ -40,7 +40,7 @@ namespace Services
 
         private ArticleService()
         {
-            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
+            m_SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AppUser"].ConnectionString);
             m_SqlConnection.Open();
         }
 
@@ -67,7 +67,7 @@ namespace Services
         /// Permet de créer un article dans la base de données et setter son ID générer
         /// </summary>
         /// <param name="article"></param>
-        public void Create(Article article)
+        public void Create(T article)
         {
             SqlCommand cmd = new SqlCommand
             {
@@ -87,7 +87,7 @@ namespace Services
         /// Permet de suppriemer un article de la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Delete(Article article)
+        public void Delete(T article)
         {
             SqlCommand cmd = new SqlCommand
             {
@@ -106,11 +106,11 @@ namespace Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public IList<Article> Read(String filter)
+        public IList<T> Read(String filter)
         {
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
-            IList<Article> articles = new List<Article>();
+            IList<T> articles = new List<T>();
 
             cmd.CommandText = STR_CREATEARTICLEPROC;
             cmd.CommandType = CommandType.StoredProcedure;
@@ -121,7 +121,7 @@ namespace Services
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Article article = new Article
+                T article = new T
                 {
                     Description = reader["description"]!=null?(String)reader["description"]:String.Empty,
                     Id = (int)reader["id"],
@@ -138,7 +138,7 @@ namespace Services
         /// Permet de mettre à jours un article dans la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Update(Article article)
+        public void Update(T article)
         {
             SqlCommand cmd = new SqlCommand
             {

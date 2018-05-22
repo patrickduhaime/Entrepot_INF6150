@@ -8,7 +8,7 @@ namespace Business
         #region "Members"
 
         //Membre privé représentant l'article de l'exemplaire
-        private Article m_Article;
+        private T m_Article;
 
         //Membre privé représentant l'id de l'exemplarie
         private int m_Id;
@@ -29,7 +29,7 @@ namespace Business
         /// <summary>
         /// Property représente l'article de l'éxemplaire
         /// </summary>
-        public Article Article
+        public T Article
         {
             get { return m_Article; }
             set { m_Article = value; }
