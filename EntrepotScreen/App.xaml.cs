@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Resources;
 
 namespace EntrepotScreen
 {
@@ -13,5 +14,14 @@ namespace EntrepotScreen
     /// </summary>
     public partial class App : Application
     {
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // Create the startup window
+            MainWindow wnd = new MainWindow();
+            wnd.Title = "Gestion de stock";
+            wnd.Show();
+        }
+
     }
 }

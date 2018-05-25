@@ -23,6 +23,33 @@ namespace EntrepotScreen
         public MainWindow()
         {
             InitializeComponent();
+
+            Loaded += MyWindow_Loaded;
+        }
+
+        private void MyWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new PageStockMouvement());
+        }
+
+        private void btnStockMouvement_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new PageStockMouvement();
+        }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new PageProducts();
+        }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new PageAdmin();
         }
     }
 }

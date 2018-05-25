@@ -5,5 +5,6 @@
         public const string STR_ARTICLENAMEERROR = "ArticleNameError";
         public const string STR_ARTICLESPACEERROR = "ArticleSpaceError";
         public const string STR_BARECODESIZEERROR = "BareCodeSizeError";
+        public const string STR_MAINWINDOWTITLE = "MainWindowTitle";
     }
 }
