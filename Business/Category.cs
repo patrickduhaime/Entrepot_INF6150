@@ -3,21 +3,15 @@ using System.ComponentModel;
 
 namespace Business
 {
-    public class Sample : IDataErrorInfo, INotifyPropertyChanged
+    public class Category : IDataErrorInfo, INotifyPropertyChanged
     {
         #region "Members"
 
-        //Membre privé représentant l'article de l'exemplaire
-        private Article m_Article;
-
-        //Membre privé représentant l'id de l'exemplarie
+        //Membre privé représentant l'id de la catégorie
         private int m_Id;
 
-        //Membre privé représentant la quantité des unité que le conteneur contient
-        private int? m_Quantity;
-
-        //Membre privé représentant le code à bare de l'article
-        private string m_SerialNumber;
+        //Membre privé représentant le nom de la catégorie
+        private string m_Name;
 
         //Membre privé représentant l'event de la modification d'une property
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,20 +21,7 @@ namespace Business
         #region "Properties"
 
         /// <summary>
-        /// Property représente l'article de l'éxemplaire
-        /// </summary>
-        public Article Article
-        {
-            get { return m_Article; }
-            set
-            {
-                m_Article = value;
-                OnPropertyChanged("Article");
-            }
-        }
-
-        /// <summary>
-        /// Property représente l'id de l'article
+        /// Property représente l'id de la catégorie
         /// </summary>
         public int Id
         {
@@ -49,28 +30,15 @@ namespace Business
         }
 
         /// <summary>
-        /// Property représente la quantité des unité que le conteneur contient
+        /// Property représente le nom de la catégorie
         /// </summary>
-        public int? Quantity
+        public string Name
         {
-            get { return m_Quantity; }
+            get { return m_Name; }
             set
             {
-                m_Quantity = value;
-                OnPropertyChanged("Quantity");
-            }
-        }
-
-        /// <summary>
-        /// Property représente le code à bare de l'article
-        /// </summary>
-        public string SerialNumber
-        {
-            get { return m_SerialNumber; }
-            set
-            {
-                m_SerialNumber = value;
-                OnPropertyChanged("SerialNumber");
+                m_Name = value;
+                OnPropertyChanged("Name");
             }
         }
 
@@ -94,9 +62,9 @@ namespace Business
                 string errorMsg = string.Empty;
                 switch (columnName)
                 {
-                    case "SerialNumber":
-                        if (String.IsNullOrEmpty(SerialNumber) || SerialNumber.Length < 4 || SerialNumber.Length > 50)
-                            errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_BARECODESIZEERROR);
+                    case "Name":
+                        if (String.IsNullOrEmpty(Name) || Name.Length < 4 || Name.Length > 50)
+                            errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_ARTICLENAMEERROR);
                         break;
                 }
                 return errorMsg;

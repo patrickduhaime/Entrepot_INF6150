@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Business
@@ -6,6 +7,9 @@ namespace Business
     public class Article : IDataErrorInfo, INotifyPropertyChanged
     {
         #region "Members"
+
+        //Membre privé représentant la catégorie de l'article
+        private Category m_Category;
 
         //Membre privé représentant la description de l'article
         private string m_Description;
@@ -17,7 +21,10 @@ namespace Business
         private string m_Name;
 
         //Membre privé représentant l'event de la modification d'une property
-        private event PropertyChangedEventHandler M_PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        //Membre privé représentant la liste des éxemplaire de l'article
+        private IList<Sample> m_Samples;
 
         //Membre privé représentant l'éspace necessaire pour stocker une unité de l'article
         private float m_Space;
@@ -27,12 +34,29 @@ namespace Business
         #region "Properties"
 
         /// <summary>
+        /// Property représente la catégorie de l'article
+        /// </summary>
+        public Category Category
+        {
+            get { return m_Category; }
+            set
+            {
+                m_Category = value;
+                OnPropertyChanged("Category");
+            }
+        }
+
+        /// <summary>
         /// Property représente la description de l'article
         /// </summary>
         public string Description
         {
             get { return m_Description; }
-            set { m_Description = value; }
+            set
+            {
+                m_Description = value;
+                OnPropertyChanged("Description");
+            }
         }
 
         /// <summary>
@@ -50,7 +74,20 @@ namespace Business
         public string Name
         {
             get { return m_Name; }
-            set { m_Name = value; }
+            set
+            {
+                m_Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        /// <summary>
+        /// Property représente la liste des éxemplarie d'un article
+        /// </summary>
+        public IList<Sample> Samples
+        {
+            get { return m_Samples; }
+            set { m_Samples = value; }
         }
 
         /// <summary>
@@ -59,7 +96,11 @@ namespace Business
         public float Space
         {
             get { return m_Space; }
-            set { m_Space = value; }
+            set
+            {
+                m_Space = value;
+                OnPropertyChanged("Space");
+            }
         }
 
         /// <summary>
@@ -102,11 +143,10 @@ namespace Business
         /// <summary>
         /// Event se leve au changement des properties
         /// </summary>
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        private void OnPropertyChanged(String propertyName)
         {
-            add { M_PropertyChanged += value; }
-
-            remove { M_PropertyChanged -= value; }
+            PropertyChangedEventHandler propertyChangedEventHandler = PropertyChanged;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #endregion "Events"

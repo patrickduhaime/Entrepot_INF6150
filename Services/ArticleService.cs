@@ -18,6 +18,8 @@ namespace Services
         private const string STR_READARTICLEPROC = "";
         private const string STR_UPDATEARTICLEPROC = "";
 
+        private const string STR_FILTERCATEGORY = "where id = {0}";
+        private const string STR_FILTERARTICLE = "where articleid = {0}";
         #endregion "Constants"
 
         #region "Membres"
@@ -65,6 +67,7 @@ namespace Services
                 Connection = ServiceDB.Instance.SqlConnection
             };
 
+            cmd.Parameters.Add("@CategoryId", SqlDbType.Int).Value = article.Category.Id;
             if (!String.IsNullOrEmpty(article.Description)) cmd.Parameters.Add("@Description", SqlDbType.VarChar).Value = article.Description;
             cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = article.Name;
             cmd.Parameters.Add("@Space", SqlDbType.Float).Value = article.Space;
@@ -112,9 +115,11 @@ namespace Services
             {
                 Article article = new Article
                 {
+                    Category = CategoryService.Instance.Read(String.Format(STR_FILTERCATEGORY, reader["categoryid"]))[0],
                     Description = reader["description"]!=null?(String)reader["description"]:String.Empty,
                     Id = (int)reader["id"],
                     Name = (String)reader["name"],
+                    Samples = SampleService.Instance.Read(String.Format(STR_FILTERARTICLE, reader["articleid"])),
                     Space = (float)reader["space"]
                 };
                 articles.Add(article);
@@ -137,7 +142,8 @@ namespace Services
             };
 
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = article.Id;
-            if(!String.IsNullOrEmpty(article.Description)) cmd.Parameters.Add("@Description", SqlDbType.VarChar).Value = article.Description;
+            cmd.Parameters.Add("@CategoryId", SqlDbType.VarChar).Value = article.Category.Id;
+            if (!String.IsNullOrEmpty(article.Description)) cmd.Parameters.Add("@Description", SqlDbType.VarChar).Value = article.Description;
             cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = article.Name;
             cmd.Parameters.Add("@Space", SqlDbType.Float).Value = article.Space;
 
