@@ -72,8 +72,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\WindowCreateProduct.xaml.cs">
-      <DependentUpon>WindowCreateProduct.xaml</DependentUpon>
+    <Compile Include="Controler\ViewModelBase.cs" />
+    <Compile Include="Tools\DialogCloser.cs" />
+    <Compile Include="Tools\IClosableViewModel.cs" />
+    <Compile Include="Tools\RelayCommand.cs" />
+    <Compile Include="Tools\SelectedItemToItemsSource.cs" />
+    <Compile Include="View\WindowCreateOrEditProduct.xaml.cs">
+      <DependentUpon>WindowCreateOrEditProduct.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -99,13 +104,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\WindowCreateProduct.xaml">
+    <Page Include="View\WindowCreateOrEditProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CreateProductModel.cs" />
+    <Compile Include="Controler\CreateOrEditProductModel.cs" />
     <Compile Include="View\PageAdmin.xaml.cs">
       <DependentUpon>PageAdmin.xaml</DependentUpon>
     </Compile>
