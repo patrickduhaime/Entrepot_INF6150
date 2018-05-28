@@ -120,8 +120,8 @@ namespace Business
         /// Retourn l'erreur de l'objet s'il a une regle brisé
         /// </summary>
         public string Error
-        {
-            get { throw new NotImplementedException(); }
+        {           //TODO : FAIRE UNE LIST ECT ECT
+            get { return "pas encore implémenté"; }
         }
 
         /// <summary>
@@ -151,6 +151,12 @@ namespace Business
                 }
                 return errorMsg;
             }
+        }
+
+        public override string ToString()
+        {
+            if (Id == 0) return GetType().Name;
+            else return GetType().Name + Id + " - " + Name;
         }
 
         #endregion "Methods"

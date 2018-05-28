@@ -68,7 +68,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controler\ViewModelBase.cs" />
-    <Compile Include="IWindow.cs" />
     <Compile Include="Tools\DialogCloser.cs" />
     <Compile Include="Tools\IClosableViewModel.cs" />
     <Compile Include="Tools\RelayCommand.cs" />

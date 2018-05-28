@@ -126,10 +126,31 @@
   <data name="BareCodeSizeError" xml:space="preserve">
     <value>Le code à barre de l'exemplaire doit avoir entre 4 et 50 caractère</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <data name="CantBeNothing" xml:space="preserve">
     <value>{0} ne peut pas etre null</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Déscription</value>
+  </data>
+  <data name="ImpossibleToSave" xml:space="preserve">
+    <value>Impossible de sauvegarder l'enregistrement</value>
+  </data>
   <data name="MainWindowTitle" xml:space="preserve">
     <value>Gestion de stock</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value>Espace</value>
   </data>
 </root>

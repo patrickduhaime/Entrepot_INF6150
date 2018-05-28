@@ -7,36 +7,26 @@ namespace EntrepotScreen.View
     /// <summary>
     /// Interaction logic for WindowCreateOrEditProduct.xaml
     /// </summary>
-    public partial class WindowCreateOrEditProduct : Window, IWindow
+    public partial class WindowCreateOrEditProduct : Window
     {
         public WindowCreateOrEditProduct()
         {
             InitializeComponent();
-            //Localise();
-            (DataContext as CreateOrEditProductModel).window = this as IWindow;
-        }
-
-        /// <summary>
-        /// Method qui permet d'acceder du model à la view
-        /// </summary>
-        /// <returns></returns>
-        public Window Window()
-        {
-            return this; 
-        }
+            Localise();                                                              
+        }             
 
         /// <summary>
         /// Method qui permet de traduire l'écran en cours
         /// </summary>
         public void Localise()
-        {
-            Title = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
-
-            this.lblCategory.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
-            this.lblDescription.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
-            this.lblName.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
-            this.lblSpace.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
-            this.lblTitle.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
+        {                                                                                             
+            Title = (DataContext as CreateOrEditProductModel).Article.ToString();
+            lblCategory.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_CATEGORY);
+            lblDescription.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_DESCRIPTION);
+            lblName.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_NAME);
+            lblSpace.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_SPACE);   
+            btnCalcel.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_CANCEL);
+            btnOK.Content = Ressource.Instance.GetTraduction(ResourcesConstant.STR_OK);
         }
     }
 }

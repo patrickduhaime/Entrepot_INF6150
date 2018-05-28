@@ -126,10 +126,31 @@
   <data name="BareCodeSizeError" xml:space="preserve">
     <value>The barcode of the copy must be between 4 and 50 characters</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CantBeNothing" xml:space="preserve">
     <value>{0} Cant be nothing</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ImpossibleToSave" xml:space="preserve">
+    <value>Impossible to save record</value>
+  </data>
   <data name="MainWindowTitle" xml:space="preserve">
     <value>Stock management</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value>Space</value>
   </data>
 </root>

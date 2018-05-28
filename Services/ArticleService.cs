@@ -132,7 +132,7 @@ namespace Services
         /// Permet de mettre à jours un article dans la base de données
         /// </summary>
         /// <param name="article"></param>
-        public void Update<Object>(Article article)
+        public void Update(Article article)
         {
             SqlCommand cmd = new SqlCommand
             {
