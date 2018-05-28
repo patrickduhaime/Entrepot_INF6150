@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -104,6 +105,18 @@ namespace Business
         }
 
         /// <summary>
+        /// Property qui permet de valider l'objet
+        /// </summary>
+        public bool IsValid
+        {
+            get { return string.IsNullOrEmpty(this.Error); }
+        }
+
+        #endregion "Properties"
+
+        #region "Methods"
+
+        /// <summary>
         /// Retourn l'erreur de l'objet s'il a une regle brisé
         /// </summary>
         public string Error
@@ -125,18 +138,22 @@ namespace Business
                 {
                     case "Name":
                         if (String.IsNullOrEmpty(Name) || Name.Length < 4 || Name.Length > 50)
-                            errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_ARTICLENAMEERROR);
+                            errorMsg = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
                         break;
 
                     case "Space":
-                        if (Space <= 0) errorMsg = Resources.Ressource.Instance.GetTraduction(Resources.ResourcesConstant.STR_ARTICLESPACEERROR);
+                        if (Space <= 0) errorMsg = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLESPACEERROR);
+                        break;
+
+                    case "Category":
+                        if (Category == null) errorMsg = String.Format(Ressource.Instance.GetTraduction(ResourcesConstant.STR_CANTBENOTHING), "Category");
                         break;
                 }
                 return errorMsg;
             }
         }
 
-        #endregion "Properties"
+        #endregion "Methods"
 
         #region "Events"
 

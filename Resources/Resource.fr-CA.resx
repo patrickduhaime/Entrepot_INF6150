@@ -126,6 +126,9 @@
   <data name="BareCodeSizeError" xml:space="preserve">
     <value>Le code à barre de l'exemplaire doit avoir entre 4 et 50 caractère</value>
   </data>
+  <data name="CantBeNothing" xml:space="preserve">
+    <value>{0} ne peut pas etre null</value>
+  </data>
   <data name="MainWindowTitle" xml:space="preserve">
     <value>Gestion de stock</value>
   </data>

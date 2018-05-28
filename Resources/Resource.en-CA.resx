@@ -126,6 +126,9 @@
   <data name="BareCodeSizeError" xml:space="preserve">
     <value>The barcode of the copy must be between 4 and 50 characters</value>
   </data>
+  <data name="CantBeNothing" xml:space="preserve">
+    <value>{0} Cant be nothing</value>
+  </data>
   <data name="MainWindowTitle" xml:space="preserve">
     <value>Stock management</value>
   </data>

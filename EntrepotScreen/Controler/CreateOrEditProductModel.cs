@@ -20,12 +20,14 @@ namespace EntrepotScreen.Controler
         //Propertie pour représenter la commande du boutton Cancel
         public RelayCommand CancelCommand { get; private set; }
 
+        public IWindow window { get; set; }
+
         #endregion "Property"
 
         #region "Constructor"
 
         public CreateOrEditProductModel()
-        {
+        {                             
             Article = new Article();
             Category = new ObservableCollection<Category>();
             //CategoryService.Instance.Read(null).ToList().ForEach(c => Category.Add(c));

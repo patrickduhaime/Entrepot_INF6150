@@ -12,25 +12,30 @@
         xmlns:helpers="clr-namespace:EntrepotScreen.Tools"
         helpers:DialogCloser.DialogResult="{Binding CloseWindowFlag}">
     <Window.Resources>
-        <vm:CreateOrEditProductModel x:Key="CreateOrEditProductModel"/>
+        <vm:CreateOrEditProductModel x:Key="CreateOrEditProductModel" />
     </Window.Resources>
     <Grid>
-        <Label x:Name="Title" Content="[Create Product]" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Height="45" Width="293" FontWeight="Bold" FontSize="22"/>
-        <Label x:Name="lblName" Content="[Name]" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Background="#00000000" Width="130"/>
-        <Label x:Name="lblDescription" Content="[Description]" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" Background="#00000000" Width="130"/>
-        <Label x:Name="lblCategory" Content="[Category]" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Background="#00000000" Width="130"/>
-        <Label x:Name="lblSpace" Content="[Space]" HorizontalAlignment="Left" Margin="20,220,0,0" VerticalAlignment="Top" Background="#00000000" Width="130"/>
-        <Button Content="[Cancel]" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=W_CreateOrEditProduct}" HorizontalAlignment="Left" Margin="255,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="[OK]" Command="{Binding OkCommand}" CommandParameter="{Binding ElementName=W_CreateOrEditProduct}" HorizontalAlignment="Left" Margin="155,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblTitle" Content="[Create Product]" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top" Height="45" Width="293" FontWeight="Bold" FontSize="22" />
+        <Label x:Name="lblName" Content="[Name]" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Background="#00000000" Width="130" />
+        <Label x:Name="lblDescription" Content="[Description]" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top" Background="#00000000" Width="130" />
+        <Label x:Name="lblCategory" Content="[Category]" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Background="#00000000" Width="130" />
+        <Label x:Name="lblSpace" Content="[Space]" HorizontalAlignment="Left" Margin="20,220,0,0" VerticalAlignment="Top" Background="#00000000" Width="130" />
+        <Button Content="[Cancel]" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=W_CreateOrEditProduct}" HorizontalAlignment="Left" Margin="255,270,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Content="[OK]" Command="{Binding OkCommand}" CommandParameter="{Binding ElementName=W_CreateOrEditProduct}" HorizontalAlignment="Left" Margin="155,270,0,0" VerticalAlignment="Top" Width="75" />
 
-        <dxe:TextEdit HorizontalAlignment="Left" Margin="180,100,0,0" VerticalAlignment="Top" Width="150" Text="{x:Null}" EditValue="{Binding Article.Name, Mode=TwoWay}"/>
-        <dxe:TextEdit HorizontalAlignment="Left" Margin="180,140,0,0" VerticalAlignment="Top" Width="150" Text="{x:Null}" EditValue="{Binding Article.Description, Mode=TwoWay}"/>
-        <dxe:TextEdit HorizontalAlignment="Left" Margin="180,220,0,0" VerticalAlignment="Top" Width="150" Text="{x:Null}" EditValue="{Binding Article.Space, Mode=TwoWay}"/>
+        <TextBox HorizontalAlignment="Left" Margin="180,100,0,0" VerticalAlignment="Top" Width="150" Text="{Binding Article.Name, Mode=TwoWay,
+            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" />
+        <TextBox HorizontalAlignment="Left" Margin="180,140,0,0" VerticalAlignment="Top" Width="150" Text="{Binding Article.Description, Mode=TwoWay,
+            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" />
+        <TextBox HorizontalAlignment="Left" Margin="180,220,0,0" VerticalAlignment="Top" Width="150" Text="{Binding Article.Space, Mode=TwoWay,
+            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" />
 
-            <ComboBox HorizontalAlignment="Left" Margin="180,180,0,0" VerticalAlignment="Top" Width="150" SelectedItem="{Binding Article.Category}" ItemsSource="{Binding Category}" HorizontalContentAlignment="Stretch">
+        <ComboBox HorizontalAlignment="Left" Margin="180,180,0,0" VerticalAlignment="Top" Width="150"
+                  SelectedItem="{Binding Article.Category, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                  ItemsSource="{Binding Category}" HorizontalContentAlignment="Stretch">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Margin="2" Text="{Binding Name}"/>
+                    <TextBlock Margin="2" Text="{Binding Name}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
             <ComboBox.ItemContainerStyle>
@@ -40,11 +45,11 @@
                             <ControlTemplate>
                                 <Grid x:Name="gd" TextElement.Foreground="Black">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="5" Grid.Column="0" Text="{Binding Id}"/>
-                                    <TextBlock Margin="5" Grid.Column="1" Text="{Binding Name}"/>
+                                    <TextBlock Margin="5" Grid.Column="0" Text="{Binding Id}" />
+                                    <TextBlock Margin="5" Grid.Column="1" Text="{Binding Name}" />
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="ComboBoxItem.IsSelected" Value="True">
@@ -62,6 +67,5 @@
                 </Style>
             </ComboBox.ItemContainerStyle>
         </ComboBox>
-
     </Grid>
 </Window>
