@@ -29,7 +29,7 @@ namespace EntrepotScreen.Controler
             Article = new Article();
             Category = new ObservableCollection<Category>();
             //CategoryService.Instance.Read(null).ToList().ForEach(c => Category.Add(c));
-            //JUSTE UN EXAMPLE
+            //JUSTE UN EXAMPLE.
             Category.Add(new Category
             {
                 Id = 1,
