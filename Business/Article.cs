@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Business
 {
@@ -30,6 +31,13 @@ namespace Business
         //Membre privé représentant l'éspace necessaire pour stocker une unité de l'article
         private float m_Space;
 
+        //Membre privé représentant la liste des erreurs de validation
+        private IList<String> m_Erros;
+       
+        public Article()
+        {
+            m_Erros = new List<String>();
+        }
         #endregion "Members"
 
         #region "Properties"
@@ -109,7 +117,7 @@ namespace Business
         /// </summary>
         public bool IsValid
         {
-            get { return string.IsNullOrEmpty(this.Error); }
+            get { return m_Erros.Count == 0; }
         }
 
         #endregion "Properties"
@@ -120,8 +128,17 @@ namespace Business
         /// Retourn l'erreur de l'objet s'il a une regle brisé
         /// </summary>
         public string Error
-        {           //TODO : FAIRE UNE LIST ECT ECT
-            get { return "pas encore implémenté"; }
+        {           
+            get
+            {
+                string errorMsg = String.Empty;
+                foreach(String str in m_Erros)
+                {
+                    if (String.IsNullOrEmpty(errorMsg)) errorMsg = str;
+                    else errorMsg += Environment.NewLine + str;
+                }
+                return errorMsg;
+            }
         }
 
         /// <summary>
@@ -133,20 +150,34 @@ namespace Business
         {
             get
             {
-                string errorMsg = string.Empty;
+                string errorMsg = string.Empty;                  
                 switch (columnName)
                 {
                     case "Name":
                         if (String.IsNullOrEmpty(Name) || Name.Length < 4 || Name.Length > 50)
+                        {
                             errorMsg = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR);
+                            if (!m_Erros.Any(str => str.Equals(errorMsg))) m_Erros.Add(errorMsg);
+                        }
+                        else m_Erros.Remove(Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLENAMEERROR));
                         break;
 
                     case "Space":
-                        if (Space <= 0) errorMsg = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLESPACEERROR);
+                        if (Space <= 0)
+                        {
+                            errorMsg = Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLESPACEERROR);
+                            if (!m_Erros.Any(str => str.Equals(errorMsg))) m_Erros.Add(errorMsg);
+                        }
+                        else m_Erros.Remove(Ressource.Instance.GetTraduction(ResourcesConstant.STR_ARTICLESPACEERROR));
                         break;
 
                     case "Category":
-                        if (Category == null) errorMsg = String.Format(Ressource.Instance.GetTraduction(ResourcesConstant.STR_CANTBENOTHING), "Category");
+                        if (Category == null)
+                        {
+                            errorMsg = String.Format(Ressource.Instance.GetTraduction(ResourcesConstant.STR_CANTBENOTHING), "Category");
+                            if(!m_Erros.Any(str => str.Equals(errorMsg))) m_Erros.Add(errorMsg);
+                        }
+                        else m_Erros.Remove(String.Format(Ressource.Instance.GetTraduction(ResourcesConstant.STR_CANTBENOTHING), "Category"));
                         break;
                 }
                 return errorMsg;

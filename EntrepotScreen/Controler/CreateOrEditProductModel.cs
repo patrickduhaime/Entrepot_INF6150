@@ -21,7 +21,7 @@ namespace EntrepotScreen.Controler
         {
             get
             {
-                if (m_Article == null) return new Article();
+                if (m_Article == null) m_Article = new Article();
                 return m_Article;
             }
             set
@@ -44,7 +44,7 @@ namespace EntrepotScreen.Controler
         #region "Constructor"
 
         public CreateOrEditProductModel()
-        {
+        {                               
             Category = new List<Category>();
             //CategoryService.Instance.Read(null).ToList().ForEach(c => Category.Add(c));
             //JUSTE UN EXAMPLE.
